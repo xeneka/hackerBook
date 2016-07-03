@@ -15,18 +15,34 @@ class Book{
     let pdfUrl:NSURL
     
     // Tanto en tag como en author nos podemos planetar usar opcionales en el sentido que un libro puede venir etiquitada o 
-    // ser anomimo. En este caso nos planteamos dos equitas por defecto untag para los tar y anomimous para los libros.
-    // Esta solución nos proporciona las ventaje de que cuando agamos el controlador las sección seran roturlada directamente
+    // ser anomimo. En este caso nos planteamos dos valores por defecto untag para los tar y anomimous para los libros.
+    // Esta solución nos proporciona las ventaja de que cuando hagamos el controlador las sección serán rotuladas directamente
     // como untag en el caso de los tar y Anonimous en el caso de los libros.
     
-    let tag = [String]()
     
-    // Para la variable de author nos hemos decantado por un array de Book en lugar de por un simple array porque en el futuro
-    // si quieramos ampliar la clase podríamos querer contar con mas información del autor y solo tendríamos que ampliar la
-    // estructura.
-    // En cuanto  a la estructura vs clase podríamos haber usado cualquiera de las dos y con la dimensión de estu
+    // No nos plantemos el hacer tag como una enum debido al gran número de opciones que hay para libros
     
-    let authorsBook = [Book]()
+    var tags = [String]()
+    
+//     Para la variable de author nos hemos decantado por un array de Book en lugar de por un array se String porque en el futuro si quieramos ampliar la clase podríamos querer contar con mas información del autor y solo tendríamos que ampliar la
+//     estructura.
+//     En cuanto  a la estructura vs clase podríamos haber usado cualquiera de las dos y con la dimensión de estructura 
+//     no afectara al rendimiento pero creo que segun la WWDC para el tema de las variables asignación etc es mejor las struct
+//     Info https://developer.apple.com/videos/play/wwdc2015/408/
+    
+    var authorsBook = [Author]()
+    
+    
+    init(titleBook title:String, coverUrl cover:NSURL, pdfUrl pdf:NSURL, bookTags tags:[String], authorsBook authors:[Author]){
+        
+        self.title = title
+        coverUrl = cover
+        pdfUrl = pdf
+        self.tags = tags
+        authorsBook = authors
+        
+        
+    }
     
     
 }

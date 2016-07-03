@@ -16,6 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+    
+        
+        //MARK: - Creando el modelo
+        
+        do{
+    
+            var books=[Book]()
+            
+        let datos:JSONArray = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
+        
+            
+            for dict in datos{
+                do{
+                let oneBook = try decode(book: dict)
+                    print(dict);
+                    print("\n")
+                    print("***")
+                    books.append(oneBook)
+                }catch{
+                    print("error en el libro")
+                }
+                
+            }
+            
+            print(books)
+            
+        }
+        
+    
+        
         return true
     }
 
