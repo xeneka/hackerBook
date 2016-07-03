@@ -12,6 +12,8 @@
 		A9DFCF301D2909F7008ADF27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9DFCF2E1D2909F7008ADF27 /* Main.storyboard */; };
 		A9DFCF321D2909F7008ADF27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9DFCF311D2909F7008ADF27 /* Assets.xcassets */; };
 		A9DFCF351D2909F7008ADF27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9DFCF331D2909F7008ADF27 /* LaunchScreen.storyboard */; };
+		A9DFCF3E1D290D06008ADF27 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFCF3D1D290D06008ADF27 /* Book.swift */; };
+		A9DFCF401D291091008ADF27 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFCF3F1D291091008ADF27 /* Author.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		A9DFCF311D2909F7008ADF27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9DFCF341D2909F7008ADF27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9DFCF361D2909F7008ADF27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9DFCF3D1D290D06008ADF27 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		A9DFCF3F1D291091008ADF27 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 		A9DFCF3C1D290A2D008ADF27 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				A9DFCF3D1D290D06008ADF27 /* Book.swift */,
+				A9DFCF3F1D291091008ADF27 /* Author.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -145,6 +151,8 @@
 			files = (
 				A9DFCF2D1D2909F7008ADF27 /* ViewController.swift in Sources */,
 				A9DFCF2B1D2909F7008ADF27 /* AppDelegate.swift in Sources */,
+				A9DFCF401D291091008ADF27 /* Author.swift in Sources */,
+				A9DFCF3E1D290D06008ADF27 /* Book.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
