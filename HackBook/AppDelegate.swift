@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for dict in datos{
                 do{
                 let oneBook = try decode(book: dict)
-                    print(dict);
-                    print("\n")
-                    print("***")
                     books.append(oneBook)
                 }catch{
                     print("error en el libro")
@@ -40,7 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
             
-            print(books)
+            
+            var libreryBook:Library = Library(Library: books)
+            print(libreryBook.countBookForTag("git"))
+            libreryBook.bookForTag("git")
+            
+            print(libreryBook.bookAtIndex(1).authorsBook)
             
         }
         
