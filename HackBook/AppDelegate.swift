@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(libreryBook.countBookForTag("git"))
                 libreryBook.bookForTag("git")
                 
-                print(libreryBook.bookAtIndex(1).authorsBook)
+                print(libreryBook.bookAtIndex(2).authorsBook)
                 
             
              // Cargando el controlador

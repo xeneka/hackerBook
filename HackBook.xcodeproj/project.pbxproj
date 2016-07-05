@@ -20,6 +20,9 @@
 		A9E702781D2BB621008F6F0D /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E702761D2BB621008F6F0D /* BookViewController.swift */; };
 		A9E702791D2BB621008F6F0D /* BookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E702771D2BB621008F6F0D /* BookViewController.xib */; };
 		A9E7027B1D2BB806008F6F0D /* pdf.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E7027A1D2BB806008F6F0D /* pdf.png */; };
+		A9E7027F1D2BD356008F6F0D /* PdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E7027D1D2BD356008F6F0D /* PdfViewController.swift */; };
+		A9E702801D2BD356008F6F0D /* PdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E7027E1D2BD356008F6F0D /* PdfViewController.xib */; };
+		A9E702831D2C0672008F6F0D /* genericsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E702821D2C0672008F6F0D /* genericsUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		A9E702761D2BB621008F6F0D /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		A9E702771D2BB621008F6F0D /* BookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookViewController.xib; sourceTree = "<group>"; };
 		A9E7027A1D2BB806008F6F0D /* pdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdf.png; sourceTree = "<group>"; };
+		A9E7027D1D2BD356008F6F0D /* PdfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PdfViewController.swift; sourceTree = "<group>"; };
+		A9E7027E1D2BD356008F6F0D /* PdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PdfViewController.xib; sourceTree = "<group>"; };
+		A9E702821D2C0672008F6F0D /* genericsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = genericsUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 		A9DFCF291D2909F7008ADF27 /* HackBook */ = {
 			isa = PBXGroup;
 			children = (
+				A9E702811D2C0648008F6F0D /* Utilities */,
 				A9E7027C1D2BBFB4008F6F0D /* Controllers */,
 				A9DFCF3C1D290A2D008ADF27 /* models */,
 				A9DFCF2A1D2909F7008ADF27 /* AppDelegate.swift */,
@@ -100,8 +107,18 @@
 			children = (
 				A9E702761D2BB621008F6F0D /* BookViewController.swift */,
 				A9E702771D2BB621008F6F0D /* BookViewController.xib */,
+				A9E7027D1D2BD356008F6F0D /* PdfViewController.swift */,
+				A9E7027E1D2BD356008F6F0D /* PdfViewController.xib */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A9E702811D2C0648008F6F0D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A9E702821D2C0672008F6F0D /* genericsUtil.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +182,7 @@
 				A9DFCF351D2909F7008ADF27 /* LaunchScreen.storyboard in Resources */,
 				A9E7027B1D2BB806008F6F0D /* pdf.png in Resources */,
 				A9E702791D2BB621008F6F0D /* BookViewController.xib in Resources */,
+				A9E702801D2BD356008F6F0D /* PdfViewController.xib in Resources */,
 				A9DFCF321D2909F7008ADF27 /* Assets.xcassets in Resources */,
 				A9DFCF301D2909F7008ADF27 /* Main.storyboard in Resources */,
 			);
@@ -184,7 +202,9 @@
 				A9DFCF461D292473008ADF27 /* JSONDecoding.swift in Sources */,
 				A9E702781D2BB621008F6F0D /* BookViewController.swift in Sources */,
 				A9DFCF481D297337008ADF27 /* Error.swift in Sources */,
+				A9E702831D2C0672008F6F0D /* genericsUtil.swift in Sources */,
 				A9DFCF3E1D290D06008ADF27 /* Book.swift in Sources */,
+				A9E7027F1D2BD356008F6F0D /* PdfViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

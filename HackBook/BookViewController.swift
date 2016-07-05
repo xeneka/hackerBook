@@ -18,6 +18,13 @@ class BookViewController: UIViewController {
     
     @IBOutlet weak var tags: UILabel!
     
+    @IBAction func viewPdf(sender: AnyObject) {
+        
+        let vc = PdfViewController(model: model!)
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
     //MARK: -  modelo
     
@@ -48,6 +55,7 @@ class BookViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
+        title = model?.title
         syncModelWithView()
         
     }

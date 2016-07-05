@@ -26,7 +26,11 @@
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem image="pdf.png" id="JVL-n1-oer"/>
+                        <barButtonItem systemItem="bookmarks" id="JVL-n1-oer">
+                            <connections>
+                                <action selector="viewPdf:" destination="-1" id="3Y9-uk-qKG"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oar-td-5XX">
@@ -48,7 +52,4 @@
             <point key="canvasLocation" x="376" y="222"/>
         </view>
     </objects>
-    <resources>
-        <image name="pdf.png" width="180" height="180"/>
-    </resources>
 </document>
