@@ -13,6 +13,7 @@ class Book{
     let title:String
     let coverUrl:NSURL
     let pdfUrl:NSURL
+    let favorite:Bool
     
     // Tanto en tag como en author nos podemos planetar usar opcionales en el sentido que un libro puede venir etiquitada o 
     // ser anomimo. En este caso nos planteamos dos valores por defecto untag para los tar y anomimous para los libros.
@@ -33,14 +34,22 @@ class Book{
     var authorsBook = [Author]()
     
     
-    init(titleBook title:String, coverUrl cover:NSURL, pdfUrl pdf:NSURL, bookTags tags:[String], authorsBook authors:[Author]){
+    init(titleBook title:String, coverUrl cover:NSURL, pdfUrl pdf:NSURL, bookTags tags:[String], authorsBook authors:[Author], favorite:Bool){
         
         self.title = title
         coverUrl = cover
         pdfUrl = pdf
         self.tags = tags
         authorsBook = authors
+        self.favorite = favorite
         
+        
+    }
+    
+   convenience init(titleBook title:String, coverUrl cover:NSURL, pdfUrl pdf:NSURL, bookTags tags:[String], authorsBook authors:[Author]){
+    
+    
+        self.init(titleBook: title, coverUrl: cover, pdfUrl: pdf, bookTags: tags, authorsBook: authors,favorite: false)
         
     }
     

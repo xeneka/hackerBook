@@ -36,7 +36,7 @@ class Library{
     }
     
     
-    //MARK: -  Init
+  
     
     
     
@@ -45,8 +45,7 @@ class Library{
     func countBookForTag(tag:String) -> Int{
     
         if let numberBookTag = tagDict[tag]{
-            print(numberBookTag)
-            print("Entro")
+           
             return numberBookTag.count
         }else{
             return 0
@@ -73,7 +72,13 @@ class Library{
     
     
     init(Library Books:[Book]){
-        self.Books = Books
+        
+        // Ordeno los libros que me han cargado. 
+        
+        self.Books = Books.sort({$0.title < $1.title})
+        
+        
+        
         
         // Leo todos los libros de la libreria
         for book in Books{

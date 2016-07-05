@@ -20,4 +20,5 @@ enum BookError:ErrorType{
     case FileError
     case WrongUrl
     case WrongConexion
+    case WrongFile
 }

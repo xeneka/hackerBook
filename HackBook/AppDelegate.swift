@@ -16,35 +16,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-    
         
-        //MARK: - Creando el modelo
+        
+         //MARK: - Creando el modelo
+        let userDefaultProperties = NSUserDefaults.standardUserDefaults()
+        var books=[Book]()
+        var datos:JSONArray = JSONArray()
+        
+        
+        if let name = userDefaultProperties.stringForKey("hackbook"){
+            // recupero el fichero de sandbox
+            print("Cargando desde disco")
+            
+            datos = try! getJSONFromLocalDisk()
+            
+            
+        }else{
+            // LEo el fichero de la url
+           
+             datos = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
+            userDefaultProperties.setBool(true, forKey: "hackbook")
+            
+            }
         
         do{
-    
-            var books=[Book]()
+                
             
-        let datos:JSONArray = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
-        
-            
-            for dict in datos{
-                do{
-                let oneBook = try decode(book: dict)
-                    books.append(oneBook)
-                }catch{
-                    print("error en el libro")
+                for dict in datos{
+                    do{
+                        let oneBook = try decode(book: dict)
+                        books.append(oneBook)
+                    }catch{
+                        print("error en el libro")
+                    }
+                    
                 }
+                
+                
+                let libreryBook:Library = Library(Library: books)
+                
+                
+                
+                print(libreryBook.countBookForTag("git"))
+                libreryBook.bookForTag("git")
+                
+                print(libreryBook.bookAtIndex(1).authorsBook)
+                
+            
                 
             }
             
+        
             
-            var libreryBook:Library = Library(Library: books)
-            print(libreryBook.countBookForTag("git"))
-            libreryBook.bookForTag("git")
-            
-            print(libreryBook.bookAtIndex(1).authorsBook)
-            
-        }
+        
+        
+        
+        
         
     
         

@@ -30,6 +30,39 @@ func getJSONFromUrl(urlToRequest: String) throws -> JSONArray{
         throw BookError.WrongConexion
     }
     
+    if saveJSONFromUrlRequest(data) {
+        print("Escribio el ficheros")
+    }else{
+        print("No escribio el fichero")
+    }
+    
+//    guard  let maybeArray = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? JSONArray else{
+//        
+//        throw BookError.wrongJSONFormat
+//    }
+//    
+//    
+//    
+//    return maybeArray!
+    
+    let dataArray:JSONArray
+    
+    do{
+        
+        dataArray = try JSONfromNSData(data)
+        return dataArray
+    }catch  {
+        throw BookError.WrongFile
+    }
+    
+    
+    
+    
+    
+}
+
+
+func JSONfromNSData(data:NSData) throws -> JSONArray {
     
     guard  let maybeArray = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? JSONArray else{
         
@@ -39,6 +72,8 @@ func getJSONFromUrl(urlToRequest: String) throws -> JSONArray{
     
     
     return maybeArray!
+    
+    
 }
 
 
@@ -98,4 +133,45 @@ func decode(book json:JSONDictionary) throws -> Book{
     
     
 }
+
+
+func saveJSONFromUrlRequest(data:NSData) -> Bool{
+    
+    
+    let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let writePath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent("hackbookurl")
+    
+    
+    
+    return data.writeToURL(writePath, atomically: true)
+    
+    
+}
+
+func getJSONFromLocalDisk()throws -> JSONArray {
+    
+    let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let writePath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent("hackbookurl")
+    //guard let data:NSData = NSData(contentsOfFile: path[0]) else{
+    guard let data:NSData = NSData(contentsOfURL: writePath) else{
+        
+        throw BookError.WrongFile
+    }
+    
+    let dataArray:JSONArray
+    
+    do{
+    
+        dataArray = try JSONfromNSData(data)
+            return dataArray
+        }catch  {
+            throw BookError.WrongFile
+        }
+    
+   
+    
+}
+        
+
+
 
