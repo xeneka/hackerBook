@@ -63,8 +63,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(libreryBook.bookAtIndex(1).authorsBook)
                 
             
+             // Cargando el controlador
+            
+            // Creamos el contralador
+            
+            let vc = BookViewController(model:libreryBook.bookAtIndex(1))
+            
+            
+            // Lo metemos en un navigation
+            
+            let unav = UINavigationController(rootViewController: vc)
+            
+            
+            window?.rootViewController = unav
+            
+            window?.makeKeyAndVisible()
+            
                 
             }
+        
+        
+       
             
         
             

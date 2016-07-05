@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 //MARK : - Aliases
@@ -147,6 +148,22 @@ func saveJSONFromUrlRequest(data:NSData) -> Bool{
     
     
 }
+
+func saveObjectJson(url:String){
+    let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let writePath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent(url)
+    
+    // Poner cental dispatch para ejecutarla
+    
+    let data:NSData = NSData(contentsOfURL: NSURL(string: url)!)!
+    
+    data.writeToURL(writePath, atomically: true)
+    
+    
+    
+}
+
+
 
 func getJSONFromLocalDisk()throws -> JSONArray {
     
