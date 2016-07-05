@@ -24,19 +24,16 @@ class Library{
     //MARK: - Properties
     
     var Books = [Book]()
-    //var Tags: NSMutableArray
+    
     var tagDict:TagDictionary = TagDictionary()
     
     //MARK: - Store properties
     
     var bookCount:Int{
         get{
-            return tagDict.count
+            return Books.count
         }
     }
-    
-    
-  
     
     
     
@@ -62,8 +59,17 @@ class Library{
         
     }
     
-    func bookAtIndex(index: Int) -> Book{
-        return Books[index]
+    func numberOfTag()->Int{
+    
+        
+        return tagDict.count
+    }
+    
+    func bookAtIndex(index: Int, tag:String) -> Book{
+        
+        let tagBook = tagDict[tag]
+        
+        return tagBook![index]
     }
     
     

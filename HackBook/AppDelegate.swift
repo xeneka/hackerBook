@@ -59,23 +59,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 print(libreryBook.countBookForTag("git"))
                 libreryBook.bookForTag("git")
+                print(libreryBook.numberOfTag())
                 
-                print(libreryBook.bookAtIndex(2).authorsBook)
+                //print(libreryBook.bookAtIndex(2).authorsBook)
                 
             
              // Cargando el controlador
             
-            // Creamos el contralador
+            // Creamos el controlador Bookview
             
-            let vc = BookViewController(model:libreryBook.bookAtIndex(1))
+            //let vc = BookViewController(model:libreryBook.bookAtIndex(1))
+            
+            // Creamos el controlador de Library
+            
+            let libvc = LibraryTableViewController(model: libreryBook)
             
             
             // Lo metemos en un navigation
             
-            let unav = UINavigationController(rootViewController: vc)
+            //let unav = UINavigationController(rootViewController: vc)
+            let navLib = UINavigationController(rootViewController: libvc)
             
             
-            window?.rootViewController = unav
+            window?.rootViewController = navLib
             
             window?.makeKeyAndVisible()
             

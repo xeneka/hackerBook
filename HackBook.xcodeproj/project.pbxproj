@@ -23,6 +23,8 @@
 		A9E7027F1D2BD356008F6F0D /* PdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E7027D1D2BD356008F6F0D /* PdfViewController.swift */; };
 		A9E702801D2BD356008F6F0D /* PdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E7027E1D2BD356008F6F0D /* PdfViewController.xib */; };
 		A9E702831D2C0672008F6F0D /* genericsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E702821D2C0672008F6F0D /* genericsUtil.swift */; };
+		A9E702861D2C1484008F6F0D /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E702841D2C1484008F6F0D /* LibraryTableViewController.swift */; };
+		A9E702871D2C1484008F6F0D /* LibraryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E702851D2C1484008F6F0D /* LibraryTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		A9E7027D1D2BD356008F6F0D /* PdfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PdfViewController.swift; sourceTree = "<group>"; };
 		A9E7027E1D2BD356008F6F0D /* PdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PdfViewController.xib; sourceTree = "<group>"; };
 		A9E702821D2C0672008F6F0D /* genericsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = genericsUtil.swift; sourceTree = "<group>"; };
+		A9E702841D2C1484008F6F0D /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
+		A9E702851D2C1484008F6F0D /* LibraryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				A9E702771D2BB621008F6F0D /* BookViewController.xib */,
 				A9E7027D1D2BD356008F6F0D /* PdfViewController.swift */,
 				A9E7027E1D2BD356008F6F0D /* PdfViewController.xib */,
+				A9E702841D2C1484008F6F0D /* LibraryTableViewController.swift */,
+				A9E702851D2C1484008F6F0D /* LibraryTableViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -180,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9DFCF351D2909F7008ADF27 /* LaunchScreen.storyboard in Resources */,
+				A9E702871D2C1484008F6F0D /* LibraryTableViewController.xib in Resources */,
 				A9E7027B1D2BB806008F6F0D /* pdf.png in Resources */,
 				A9E702791D2BB621008F6F0D /* BookViewController.xib in Resources */,
 				A9E702801D2BD356008F6F0D /* PdfViewController.xib in Resources */,
@@ -200,6 +207,7 @@
 				A9DFCF441D291D53008ADF27 /* Library.swift in Sources */,
 				A9DFCF401D291091008ADF27 /* Author.swift in Sources */,
 				A9DFCF461D292473008ADF27 /* JSONDecoding.swift in Sources */,
+				A9E702861D2C1484008F6F0D /* LibraryTableViewController.swift in Sources */,
 				A9E702781D2BB621008F6F0D /* BookViewController.swift in Sources */,
 				A9DFCF481D297337008ADF27 /* Error.swift in Sources */,
 				A9E702831D2C0672008F6F0D /* genericsUtil.swift in Sources */,
