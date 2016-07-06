@@ -8,11 +8,16 @@
 
 import UIKit
 
+let BookDidChangeNotification = "BookChange"
+let BookKey = "Key"
+
+
 class LibraryTableViewController: UITableViewController {
         
     //MARK: - Properties
     
     let model:Library?
+    var delegate:LibreryTableViewControllerDelegate?
     
     init(model:Library){
         self.model = model
@@ -24,9 +29,18 @@ class LibraryTableViewController: UITableViewController {
     }
     
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
+        title = "Library"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nibName = UINib(nibName: "BookTableViewCell", bundle:nil)
+        self.tableView.registerNib(nibName, forCellReuseIdentifier: "bookCell")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -66,7 +80,7 @@ class LibraryTableViewController: UITableViewController {
 
         // Tipo de celda
         
-        let cellId = "BookCell"
+        let cellId = "bookCell"
         
         
         // Averiguar el libro
@@ -75,21 +89,55 @@ class LibraryTableViewController: UITableViewController {
         
         // crear celda
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId)
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! BookTableViewCell
         
-        if cell == nil {
-            // el optionalesta vacila
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellId)
-            
-        }
+        
+        
+//        if cell == nil {
+//            // el optionalesta vacila
+//            
+//            //let celda:UINib = UINib(nibName: "BookTableViewCell", bundle: nil)
+//            //tableView.registerNib(celda, forCellReuseIdentifier: cellId)
+//            cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! BookTableViewCell
+//        
+//            //cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellId)
+//            
+//        }
         
         let book = model?.bookAtIndex(indexPath.row, tag: getKeyforSection(indexPath.section))
         
-        cell?.textLabel?.text = book?.title
+        
+        cell.bookTitle.text = book?.title
+        
+        
+        
+        
 
-
-        return cell!
+        return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let book = model?.bookAtIndex(indexPath.row, tag: getKeyforSection(indexPath.section))
+        
+        //let vc = BookViewController(model: book!)
+        //navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = LibraryTableViewController(model: self.model!)
+        
+        delegate?.LibreryTableViewController(vc, book: book!)
+        
+        //Enviamos notifiacion
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        
+        let notif = NSNotification(name: BookDidChangeNotification, object: self, userInfo: [BookKey:book!])
+        
+        nc.postNotification(notif)
+        
+        
+    }
+    
     
 
     /*
@@ -148,3 +196,14 @@ class LibraryTableViewController: UITableViewController {
     
     
 }
+
+
+//MARK: - protocol
+
+protocol LibreryTableViewControllerDelegate{
+    func LibreryTableViewController(vc:LibraryTableViewController, book:Book)
+}
+
+
+
+

@@ -29,19 +29,25 @@ class PdfViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(bookDidchange), name: BookDidChangeNotification, object: nil)
+        
         syncronizeModel()
     
     }
     
     
     func syncronizeModel(){
-        
+       
         
         if let url = model?.pdfUrl{
-            if verifyUrlResponse(url){
+            
+           // if verifyUrlResponse(url){
+                
                 viewpdf.loadData(NSData(contentsOfURL: (model?.pdfUrl)!)!,
                                  MIMEType: "application/pdf", textEncodingName: "", baseURL: (model?.pdfUrl.URLByDeletingLastPathComponent)!)
-            }
+           // }
         }
         
         
@@ -50,6 +56,19 @@ class PdfViewController: UIViewController {
     
     
     
+    //MARK: - util
+    
+    func bookDidchange(notificacion: NSNotification){
+        self.model = notificacion.userInfo![BookKey] as! Book
+        
+        syncronizeModel()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.removeObserver(self)
+    }
     
     
     override func viewDidLoad() {

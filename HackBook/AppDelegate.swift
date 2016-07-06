@@ -26,21 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let name = userDefaultProperties.stringForKey("hackbook"){
             // recupero el fichero de sandbox
-            print("Cargando desde disco")
-            
             datos = try! getJSONFromLocalDisk()
-            
-            
         }else{
             // LEo el fichero de la url
-           
              datos = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
             userDefaultProperties.setBool(true, forKey: "hackbook")
-            
             }
         
         do{
-                
             
                 for dict in datos{
                     do{
@@ -51,37 +44,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                 }
-                
-                
+            
                 let libreryBook:Library = Library(Library: books)
                 
-                
-                
-                print(libreryBook.countBookForTag("git"))
-                libreryBook.bookForTag("git")
-                print(libreryBook.numberOfTag())
-                
-                //print(libreryBook.bookAtIndex(2).authorsBook)
-                
-            
              // Cargando el controlador
             
             // Creamos el controlador Bookview
             
-            //let vc = BookViewController(model:libreryBook.bookAtIndex(1))
+            let vc = BookViewController(model:libreryBook.bookAtIndex(1, tag: "git"))
             
             // Creamos el controlador de Library
             
             let libvc = LibraryTableViewController(model: libreryBook)
             
+            libvc.delegate = vc
             
             // Lo metemos en un navigation
             
-            //let unav = UINavigationController(rootViewController: vc)
+            let unav = UINavigationController(rootViewController: vc)
             let navLib = UINavigationController(rootViewController: libvc)
             
+            let splitVc = UISplitViewController()
+            splitVc.viewControllers = [navLib, unav]
             
-            window?.rootViewController = navLib
+            window?.rootViewController = splitVc
             
             window?.makeKeyAndVisible()
             
@@ -127,4 +113,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

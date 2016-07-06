@@ -36,7 +36,8 @@ class BookViewController: UIViewController {
     }
     
     func syncModelWithView(){
-    
+        
+        
         tags.text = model?.tags.joinWithSeparator("-")
         
         for auth in (model?.authorsBook)!{
@@ -53,12 +54,26 @@ class BookViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        // Para que VC se ajuste al espacio que deja el navigation
+        edgesForExtendedLayout = .None
         title = model?.title
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(bookDidchange), name: BookDidChangeNotification, object: nil)
+        
+        
         syncModelWithView()
         
     }
+    
+    func bookDidchange(notificacion: NSNotification){
+        self.model = notificacion.userInfo![BookKey] as! Book
+        
+        syncModelWithView()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +85,13 @@ class BookViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.removeObserver(self)
+    }
+
 
     /*
     // MARK: - Navigation
@@ -81,4 +103,13 @@ class BookViewController: UIViewController {
     }
     */
 
+}
+
+extension BookViewController:LibreryTableViewControllerDelegate{
+    
+    func LibreryTableViewController(vc: LibraryTableViewController, book: Book) {
+        model = book
+        syncModelWithView()
+    }
+    
 }
