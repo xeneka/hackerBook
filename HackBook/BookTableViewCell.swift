@@ -8,14 +8,29 @@
 
 import UIKit
 
+
 class BookTableViewCell: UITableViewCell {
 
+    //MARK: -  properties
+    
+    var index:Int?
+    var seccion:String?
+    
+    //MARK: - xib
+    
     @IBOutlet weak var bookTitle: UILabel!
     
     @IBAction func viewPdf(sender: AnyObject) {
-        print("HOLAxxx")
+    
         
     }
+   
+    
+    
+    @IBOutlet weak var favorite: UIImageView!
+   
+        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +42,9 @@ class BookTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-       
+   
+    
+    
    
     
 }

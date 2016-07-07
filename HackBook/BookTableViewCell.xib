@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="BookTableViewCell" customModule="HackBook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="BookTableViewCell" customModule="HackBook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="101.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieq-TL-xdN">
@@ -21,17 +21,24 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6b8-pn-nAL">
-                        <rect key="frame" x="285" y="11" width="22" height="22"/>
+                        <rect key="frame" x="186" y="8" width="22" height="22"/>
                         <connections>
                             <action selector="viewPdf:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OTM-Oy-MMl"/>
                         </connections>
                     </button>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-Xa-BHc">
+                        <rect key="frame" x="279" y="4" width="33" height="29"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="bookTitle" destination="ieq-TL-xdN" id="PxA-xQ-UKt"/>
+                <outlet property="favorite" destination="QAd-Xa-BHc" id="AbX-yl-6sS"/>
             </connections>
-            <point key="canvasLocation" x="148" y="246"/>
+            <point key="canvasLocation" x="148" y="275"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="start.jpg" width="102" height="102"/>
+    </resources>
 </document>

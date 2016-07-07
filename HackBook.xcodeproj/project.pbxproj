@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A96F5ED41D2E57A8005CEE14 /* start.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A96F5ED31D2E57A8005CEE14 /* start.jpg */; };
 		A9DFCF2B1D2909F7008ADF27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFCF2A1D2909F7008ADF27 /* AppDelegate.swift */; };
 		A9DFCF301D2909F7008ADF27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9DFCF2E1D2909F7008ADF27 /* Main.storyboard */; };
 		A9DFCF321D2909F7008ADF27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9DFCF311D2909F7008ADF27 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A96F5ED31D2E57A8005CEE14 /* start.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start.jpg; sourceTree = "<group>"; };
 		A9DFCF271D2909F7008ADF27 /* HackBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9DFCF2A1D2909F7008ADF27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9DFCF2F1D2909F7008ADF27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A96F5ED21D2E578F005CEE14 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				A96F5ED31D2E57A8005CEE14 /* start.jpg */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
 		A9DFCF1E1D2909F7008ADF27 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +92,7 @@
 		A9DFCF291D2909F7008ADF27 /* HackBook */ = {
 			isa = PBXGroup;
 			children = (
+				A96F5ED21D2E578F005CEE14 /* resource */,
 				A9E702811D2C0648008F6F0D /* Utilities */,
 				A9E7027C1D2BBFB4008F6F0D /* Controllers */,
 				A9DFCF3C1D290A2D008ADF27 /* models */,
@@ -189,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9DFCF351D2909F7008ADF27 /* LaunchScreen.storyboard in Resources */,
+				A96F5ED41D2E57A8005CEE14 /* start.jpg in Resources */,
 				A9E702871D2C1484008F6F0D /* LibraryTableViewController.xib in Resources */,
 				A9E7027B1D2BB806008F6F0D /* pdf.png in Resources */,
 				A9E702791D2BB621008F6F0D /* BookViewController.xib in Resources */,

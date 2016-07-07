@@ -24,6 +24,8 @@ class LibraryTableViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    let nc = NSNotificationCenter.defaultCenter()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,9 +33,11 @@ class LibraryTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
-        
         title = "Library"
+        
+        nc.addObserver(self, selector: #selector(changeFavorite), name: FavoriteDidChangeNotification, object: nil)
+        
+        
     }
     
     override func viewDidLoad() {
@@ -108,6 +112,12 @@ class LibraryTableViewController: UITableViewController {
         
         
         cell.bookTitle.text = book?.title
+        cell.favorite.hidden = !(book?.favorite)!
+      
+        
+//        cell.index = indexPath.row
+//        cell.seccion = getKeyforSection(indexPath.section)
+        
         
         
         
@@ -129,7 +139,7 @@ class LibraryTableViewController: UITableViewController {
         
         //Enviamos notifiacion
         
-        let nc = NSNotificationCenter.defaultCenter()
+        
         
         let notif = NSNotification(name: BookDidChangeNotification, object: self, userInfo: [BookKey:book!])
         
@@ -192,7 +202,9 @@ class LibraryTableViewController: UITableViewController {
         return (model?.tagDict.keys.sort()[index])!
     }
     
-    
+    func changeFavorite(notificacion:NSNotification){
+        tableView.reloadData()
+    }
     
     
 }

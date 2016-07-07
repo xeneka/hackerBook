@@ -8,6 +8,10 @@
 
 import UIKit
 
+let FavoriteDidChangeNotification = "FavoriteChange"
+
+
+
 class BookViewController: UIViewController {
 
     //MARK: - Properties
@@ -18,6 +22,16 @@ class BookViewController: UIViewController {
     
     @IBOutlet weak var tags: UILabel!
     
+    @IBAction func markFavorite(sender: AnyObject) {
+        
+        model?.favorite = !(model?.favorite)!
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        let notif = NSNotification.init(name: FavoriteDidChangeNotification, object: self)
+        nc.postNotification(notif)
+        
+        
+    }
     @IBAction func viewPdf(sender: AnyObject) {
         
         let vc = PdfViewController(model: model!)

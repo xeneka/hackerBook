@@ -13,7 +13,7 @@ class Book{
     let title:String
     let coverUrl:NSURL
     let pdfUrl:NSURL
-    let favorite:Bool
+    var favorite:Bool
     
     // Tanto en tag como en author nos podemos planetar usar opcionales en el sentido que un libro puede venir etiquitada o 
     // ser anomimo. En este caso nos planteamos dos valores por defecto untag para los tar y anomimous para los libros.
