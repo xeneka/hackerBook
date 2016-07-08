@@ -37,14 +37,7 @@ func getJSONFromUrl(urlToRequest: String) throws -> JSONArray{
         print("No escribio el fichero")
     }
     
-//    guard  let maybeArray = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? JSONArray else{
-//        
-//        throw BookError.wrongJSONFormat
-//    }
-//    
-//    
-//    
-//    return maybeArray!
+
     
     let dataArray:JSONArray
     
@@ -188,7 +181,29 @@ func getJSONFromLocalDisk()throws -> JSONArray {
    
     
 }
-        
+
+
+func sourceJson() ->JSONArray{
+    let userDefaultProperties = NSUserDefaults.standardUserDefaults()
+    
+    var datos:JSONArray = JSONArray()
+    
+    
+    if let name = userDefaultProperties.stringForKey("hackbook"){
+        // recupero el fichero de sandbox
+        datos = try! getJSONFromLocalDisk()
+    }else{
+        // LEo el fichero de la url
+        datos = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
+        userDefaultProperties.setBool(true, forKey: "hackbook")
+    }
+    
+    return datos
+    
+}
+
+
+
 
 
 

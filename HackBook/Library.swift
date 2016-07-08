@@ -73,10 +73,6 @@ class Library{
     }
     
     
-    
-    
-    
-    
     init(Library Books:[Book]){
         
         // Ordeno los libros que me han cargado. 
@@ -107,6 +103,29 @@ class Library{
         
         
     
+    }
+    
+    convenience init(ArrayBook:JSONArray){
+        var books=[Book]()
+        do{
+            
+            for dict in ArrayBook{
+                do{
+                    let oneBook = try decode(book: dict)
+                    books.append(oneBook)
+                }catch{
+                    print("error en el libro")
+                }
+                
+            }
+            
+            //let libreryBook:Library = Library(Library: books)
+            
+            self.init(Library: books)
+            
+        }
+        
+        
     }
     
     

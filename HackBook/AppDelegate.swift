@@ -19,70 +19,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
          //MARK: - Creando el modelo
-        let userDefaultProperties = NSUserDefaults.standardUserDefaults()
-        var books=[Book]()
-        var datos:JSONArray = JSONArray()
+
+        var datos:JSONArray = sourceJson()
+        let libreryBook:Library = Library(ArrayBook: datos)
         
-        
-        if let name = userDefaultProperties.stringForKey("hackbook"){
-            // recupero el fichero de sandbox
-            datos = try! getJSONFromLocalDisk()
-        }else{
-            // LEo el fichero de la url
-             datos = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
-            userDefaultProperties.setBool(true, forKey: "hackbook")
-            }
-        
-        do{
+        //MARK: - Controllers
             
-                for dict in datos{
-                    do{
-                        let oneBook = try decode(book: dict)
-                        books.append(oneBook)
-                    }catch{
-                        print("error en el libro")
-                    }
-                    
-                }
+                  
+        // Cargando el controlador
             
-                let libreryBook:Library = Library(Library: books)
-                
-             // Cargando el controlador
+        // Creamos el controlador Bookview
             
-            // Creamos el controlador Bookview
+        let vc = BookViewController(model:libreryBook.bookAtIndex(1, tag: "git"))
             
-            let vc = BookViewController(model:libreryBook.bookAtIndex(1, tag: "git"))
+        // Creamos el controlador de Library
             
-            // Creamos el controlador de Library
+        let libvc = LibraryTableViewController(model: libreryBook)
             
-            let libvc = LibraryTableViewController(model: libreryBook)
+        libvc.delegate = vc
             
-            libvc.delegate = vc
+        // Lo metemos en un navigation
             
-            // Lo metemos en un navigation
+        let unav = UINavigationController(rootViewController: vc)
+        let navLib = UINavigationController(rootViewController: libvc)
             
-            let unav = UINavigationController(rootViewController: vc)
-            let navLib = UINavigationController(rootViewController: libvc)
+        let splitVc = UISplitViewController()
+        splitVc.viewControllers = [navLib, unav]
             
-            let splitVc = UISplitViewController()
-            splitVc.viewControllers = [navLib, unav]
+        window?.rootViewController = splitVc
             
-            window?.rootViewController = splitVc
-            
-            window?.makeKeyAndVisible()
-            
-                
-            }
-        
-        
-       
-            
-        
-            
-        
-        
-        
-        
+        window?.makeKeyAndVisible()
         
     
         
