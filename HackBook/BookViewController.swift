@@ -9,6 +9,7 @@
 import UIKit
 
 let FavoriteDidChangeNotification = "FavoriteChange"
+let bookKey = "BookKey"
 
 
 
@@ -26,8 +27,10 @@ class BookViewController: UIViewController {
         
         model?.favorite = !(model?.favorite)!
         
+        
         let nc = NSNotificationCenter.defaultCenter()
-        let notif = NSNotification.init(name: FavoriteDidChangeNotification, object: self)
+        let notif = NSNotification.init(name: FavoriteDidChangeNotification, object: self, userInfo: [bookKey : model!])
+        
         nc.postNotification(notif)
         
         
@@ -58,10 +61,14 @@ class BookViewController: UIViewController {
             authors.text?.appendContentsOf(auth.name)
         }
         
-        //let data:NSData = NSData(contentsOfURL: NSURL(string: (model?.coverUrl.absoluteString)!)!)!
-        cover.image = (UIImage(data: NSData(contentsOfURL: (model?.coverUrl)!)!))
         
-        
+        cover.image = model?.showImage()
+//        do{
+//        cover.image = (UIImage(data: try objFromDisk((model?.coverUrl.absoluteString)!)))
+//        print(try objFromDisk((model?.coverUrl.absoluteString)!))
+//        }catch{
+//            print("ERROR")
+//        }
     }
     
     required init?(coder aDecoder: NSCoder) {

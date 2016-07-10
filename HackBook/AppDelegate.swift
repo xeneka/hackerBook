@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
          //MARK: - Creando el modelo
-
+        //  1.- Cargamos los datos y despues creamos la libreria porque así mantenemos independiente el modelo (libreria) del 
+        // origen de los datos. Si tuvieramos los datos en una base de datos tan sólo habría que cambiar el origen de datos
         var datos:JSONArray = sourceJson()
+        
         let libreryBook:Library = Library(ArrayBook: datos)
         
         //MARK: - Controllers

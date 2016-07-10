@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Book{
     
@@ -51,6 +52,39 @@ class Book{
     
         self.init(titleBook: title, coverUrl: cover, pdfUrl: pdf, bookTags: tags, authorsBook: authors,favorite: false)
         
+    }
+    
+    
+    // En esta función llamamos al funcion que gestiono la carga de datos para que nos devuelva la imagen
+    // En caso de cambiar el origne de datos por ejemplo una base de datos o no guardar los datos en el dispositivo
+    // el origen actura en consecuencia independizandolo del modelo.
+    // Como mejora en la sieguiente versión podemos usar un protocolo que daba implementar el origen de datos
+    
+    func showImage() -> UIImage{
+        var image:UIImage = UIImage(named: "noexist.jpg")!
+        do{
+            image = (UIImage(data: try objFromDisk((coverUrl.absoluteString))))!
+            
+        }catch{
+            
+        }
+        
+      return image
+    }
+    
+    func showPdf() -> NSData{
+        
+        let bundle:NSBundle = NSBundle.mainBundle()
+        let url = bundle.URLForResource("noexist", withExtension: "pdf")
+        
+        var pdf:NSData = NSData(contentsOfURL: url!)!
+        do{
+            pdf = try objFromDisk(pdfUrl.absoluteString)
+        }catch{
+            
+        }
+     
+        return pdf
     }
     
     

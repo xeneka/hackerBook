@@ -77,14 +77,14 @@ class Library{
         
         // Ordeno los libros que me han cargado. 
         
-        self.Books = Books.sort({$0.title < $1.title})
+        self.Books = Books.sort({$0.title < $1.title}) 
         
         
         
         
         // Leo todos los libros de la libreria
         for book in Books{
-            // Doy de alta todos los tag, los tags no se repiten porque los dos de alta como clave en el diccionario
+            // Doy de alta todos los tag, los tags no se repiten porque los doi de alta como clave en el diccionario
             for tag in book.tags{
                 
                 if let tagD = tagDict[tag.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())]{
@@ -119,7 +119,7 @@ class Library{
                 
             }
             
-            //let libreryBook:Library = Library(Library: books)
+            
             
             self.init(Library: books)
             
@@ -128,6 +128,31 @@ class Library{
         
     }
     
+        
+    func addFavorite(book:Book){
+        
+        // Verificar si existe la etiqueta
+        
+        if let tadD = tagDict["❤ favoritos"] {
+            
+            tagDict["❤ favoritos"]?.append(book)
+            
+        }else{
+            tagDict["❤ favoritos"] = BooksArray()
+            tagDict["❤ favoritos"]?.append(book)
+        }
+        
+        
+    }
+    
+    func delFavorite(book:Book){
+        
+        if let tadD = tagDict["favoritos"]{
+            
+        }
+        
+        
+    }
     
     
     

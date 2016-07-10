@@ -199,10 +199,26 @@ class LibraryTableViewController: UITableViewController {
     //MARK: - utilities
     
     func getKeyforSection(index:Int) -> String{
-        return (model?.tagDict.keys.sort()[index])!
+        
+        var sectionString = model?.tagDict.keys.sort()
+        
+        if let order = sectionString?.indexOf("❤ favoritos"){
+            print(order)
+            sectionString?.removeAtIndex(order);
+            sectionString?.insert("❤ favoritos", atIndex:0)
+            
+        }
+        
+        //return (model?.tagDict.keys.sort()[index])!
+        
+        return sectionString![index]
     }
     
     func changeFavorite(notificacion:NSNotification){
+        
+        let info = notificacion.userInfo!
+        let book = info[bookKey] as! Book
+        model?.addFavorite(book)
         tableView.reloadData()
     }
     

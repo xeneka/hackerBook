@@ -41,15 +41,7 @@ class PdfViewController: UIViewController {
     func syncronizeModel(){
        
         
-        if let url = model?.pdfUrl{
-            
-           // if verifyUrlResponse(url){
-                
-                viewpdf.loadData(NSData(contentsOfURL: (model?.pdfUrl)!)!,
-                                 MIMEType: "application/pdf", textEncodingName: "", baseURL: (model?.pdfUrl.URLByDeletingLastPathComponent)!)
-           // }
-        }
-        
+               viewpdf.loadData((model?.showPdf())!, MIMEType: "application/pdf", textEncodingName: "", baseURL: (model?.pdfUrl.URLByDeletingLastPathComponent)!)
         
         
     }

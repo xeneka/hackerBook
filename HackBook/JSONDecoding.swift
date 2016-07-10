@@ -44,6 +44,11 @@ func getJSONFromUrl(urlToRequest: String) throws -> JSONArray{
     do{
         
         dataArray = try JSONfromNSData(data)
+        
+        // OJO Esto pasarlo a GCD
+        saveAllObjfromJSON(dataArray)
+        // FIND
+        
         return dataArray
     }catch  {
         throw BookError.WrongFile
@@ -142,15 +147,20 @@ func saveJSONFromUrlRequest(data:NSData) -> Bool{
     
 }
 
-func saveObjectJson(url:String){
+func saveObjectJson(url:NSURL){
     let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    let writePath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent(url)
+    
+    
+    let writePath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent(url.lastPathComponent!)
     
     // Poner cental dispatch para ejecutarla
     
-    let data:NSData = NSData(contentsOfURL: NSURL(string: url)!)!
     
-    data.writeToURL(writePath, atomically: true)
+    if let data:NSData = NSData(contentsOfURL: url){
+        data.writeToURL(writePath, atomically: true)
+    }
+    
+    
     
     
     
@@ -183,6 +193,7 @@ func getJSONFromLocalDisk()throws -> JSONArray {
 }
 
 
+
 func sourceJson() ->JSONArray{
     let userDefaultProperties = NSUserDefaults.standardUserDefaults()
     
@@ -203,6 +214,48 @@ func sourceJson() ->JSONArray{
 }
 
 
+
+
+
+
+// Recorre el diccionario y guarda en local las url de los pdf y de las imagenes
+func saveAllObjfromJSON(data:JSONArray){
+    
+    for bks in data{
+        
+     
+       
+        if let urlImg = NSURL(string: bks["image_url"] as! String) , let urlPdf = NSURL(string: bks["pdf_url"] as! String) {
+           
+            saveObjectJson(urlImg)
+            saveObjectJson(urlPdf)
+            
+        }
+      
+    }
+    
+}
+
+
+
+// Devuelve el recurso almacenado en disco
+
+func objFromDisk(data:String) throws -> NSData{
+    
+    let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    
+    
+    if let urlD = NSURL(string: data)?.lastPathComponent{
+    
+        let readPath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent(urlD)
+        print(readPath)
+        if let contenido = NSData(contentsOfURL: readPath){
+            return contenido
+        }
+    }
+ 
+    throw BookError.WrongFile
+}
 
 
 
