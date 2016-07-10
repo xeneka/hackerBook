@@ -176,18 +176,46 @@ class Library{
         
     }
     
+    
+    // La función  utiliza el origen de datos de carga por que si se  cambia
+    // los datos y se graban en una base de datos por ejemplo
+    
+    
     func marcaDesmarcaFavorie(book:Book){
         
-       
-        
+       delFavorite(book)
         if book.favorite {
-            addFavorite(book)
-        }else{
             
-            delFavorite(book)
+            addFavorite(book)
+            
         }
+     
+        if ( tagDict["❤ favoritos"]!.count > 0){
+        favoriteSave(tagDict["❤ favoritos"]!)
+        }
+    }
+    
+    
+    func batchFavorites(fav:[String]){
+        
+    
+        for tagD in Books {
+            
+            for each in fav{
+                
+                if tagD.title == each{
+                    addFavorite(tagD)
+                }
+            }
+            
+            
+            
+            }
         
     }
+    
+    
+    
     
     
     

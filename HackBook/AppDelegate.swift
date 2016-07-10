@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // origen de los datos. Si tuvieramos los datos en una base de datos tan sólo habría que cambiar el origen de datos
         var datos:JSONArray = sourceJson()
         
+        
         let libreryBook:Library = Library(ArrayBook: datos)
+        libreryBook.batchFavorites(favoriteRestore())
         
         //MARK: - Controllers
         

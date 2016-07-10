@@ -15,6 +15,8 @@ typealias JSONObject        =   AnyObject
 typealias JSONDictionary    =   [String : JSONObject]
 typealias JSONArray         =   [JSONDictionary]
 
+let keyFavorite = "keyFavorite"
+
 
 func getJSONFromUrl(urlToRequest: String) throws -> JSONArray{
     
@@ -256,6 +258,34 @@ func objFromDisk(data:String) throws -> NSData{
     }
  
     throw BookError.WrongFile
+}
+
+
+func favoriteSave(favorites:[Book]){
+    
+    var array = [String]()
+    
+    for b in favorites{
+        array.append(b.title)
+    }
+    
+    var defaults = NSUserDefaults.standardUserDefaults()
+    defaults.setObject(array, forKey: keyFavorite)
+    
+    
+}
+
+func favoriteRestore()->[String]{
+    var defaults = NSUserDefaults.standardUserDefaults()
+    
+    var array = [String]()
+    
+    if let arrayFavorite:AnyObject? = defaults.objectForKey(keyFavorite){
+            array = arrayFavorite as! [String]
+    }
+    
+    print(array)
+    return array
 }
 
 
