@@ -130,8 +130,7 @@ class LibraryTableViewController: UITableViewController {
         
         let book = model?.bookAtIndex(indexPath.row, tag: getKeyforSection(indexPath.section))
         
-        //let vc = BookViewController(model: book!)
-        //navigationController?.pushViewController(vc, animated: true)
+        
         
         let vc = LibraryTableViewController(model: self.model!)
         
@@ -229,6 +228,20 @@ class LibraryTableViewController: UITableViewController {
 
 protocol LibreryTableViewControllerDelegate{
     func LibreryTableViewController(vc:LibraryTableViewController, book:Book)
+}
+
+////MARK: -  Protocolo
+
+extension LibraryTableViewController:LibreryTableViewControllerDelegate{
+    
+    func LibreryTableViewController(vc: LibraryTableViewController, book: Book) {
+       
+        
+        let vc = BookViewController(model: book)
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }
 
 

@@ -26,29 +26,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let libreryBook:Library = Library(ArrayBook: datos)
         
         //MARK: - Controllers
+        
+        //Averiguo el dispositivo
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone{
             
+            let libvc = LibraryTableViewController(model: libreryBook)
+            
+            //libvc.delegate = vc
+            
+             let navLib = UINavigationController(rootViewController: libvc)
+            libvc.delegate = libvc
+            
+            window?.rootViewController = navLib
+            
+        }else{
+          
+            // Cargando el controlador
+            
+            // Creamos el controlador Bookview
+            
+            let vc = BookViewController(model:libreryBook.bookAtIndex(1, tag: "git"))
+            
+            // Creamos el controlador de Library
+            
+            let libvc = LibraryTableViewController(model: libreryBook)
+            
+            libvc.delegate = vc
+            
+            // Lo metemos en un navigation
+            
+            let unav = UINavigationController(rootViewController: vc)
+            let navLib = UINavigationController(rootViewController: libvc)
+            
+            let splitVc = UISplitViewController()
+            splitVc.viewControllers = [navLib, unav]
+            
+            window?.rootViewController = splitVc
+            
+        }
                   
-        // Cargando el controlador
-            
-        // Creamos el controlador Bookview
-            
-        let vc = BookViewController(model:libreryBook.bookAtIndex(1, tag: "git"))
-            
-        // Creamos el controlador de Library
-            
-        let libvc = LibraryTableViewController(model: libreryBook)
-            
-        libvc.delegate = vc
-            
-        // Lo metemos en un navigation
-            
-        let unav = UINavigationController(rootViewController: vc)
-        let navLib = UINavigationController(rootViewController: libvc)
-            
-        let splitVc = UISplitViewController()
-        splitVc.viewControllers = [navLib, unav]
-            
-        window?.rootViewController = splitVc
+       
             
         window?.makeKeyAndVisible()
         

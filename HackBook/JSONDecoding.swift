@@ -199,12 +199,13 @@ func sourceJson() ->JSONArray{
     
     var datos:JSONArray = JSONArray()
     
-    
     if let name = userDefaultProperties.stringForKey("hackbook"){
         // recupero el fichero de sandbox
+        print("Leyendo de Disco");
         datos = try! getJSONFromLocalDisk()
     }else{
         // LEo el fichero de la url
+        print("Leyendo de Internet")
         datos = try! getJSONFromUrl("https://t.co/K9ziV0z3SJ")
         userDefaultProperties.setBool(true, forKey: "hackbook")
     }
