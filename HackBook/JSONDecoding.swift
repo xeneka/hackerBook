@@ -251,7 +251,7 @@ func objFromDisk(data:String) throws -> NSData{
     if let urlD = NSURL(string: data)?.lastPathComponent{
     
         let readPath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent(urlD)
-        print(readPath)
+       
         if let contenido = NSData(contentsOfURL: readPath){
             return contenido
         }
@@ -284,7 +284,7 @@ func favoriteRestore()->[String]{
             array = arrayFavorite as! [String]
     }
     
-    print(array)
+    
     return array
 }
 
