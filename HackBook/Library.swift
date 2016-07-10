@@ -147,10 +147,45 @@ class Library{
     
     func delFavorite(book:Book){
         
-        if let tadD = tagDict["favoritos"]{
+        if var tadD = tagDict["❤ favoritos"]{
+            
+            var elemento=0;
+            for each in tadD{
+                
+                
+                
+                if each == book{
+                    
+                    tadD.removeAtIndex(elemento)
+                    
+                }
+                elemento+=1;
+            }
+           
+            if tadD.count == 0 {
+                
+                tagDict.removeValueForKey("❤ favoritos")
+            }else{
+               tagDict["❤ favoritos"] = tadD 
+            }
+            
+           
             
         }
         
+        
+    }
+    
+    func marcaDesmarcaFavorie(book:Book){
+        
+       
+        
+        if book.favorite {
+            addFavorite(book)
+        }else{
+            
+            delFavorite(book)
+        }
         
     }
     

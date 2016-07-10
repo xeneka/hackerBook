@@ -35,6 +35,20 @@ class Book{
     var authorsBook = [Author]()
     
     
+    //Mark; Proxies
+    
+    // Para compara libros solo utilizo el titulo ya que el resto de parametros pueden ser diferenctes para el mismo libro
+    // puedo tener el mismo libro en dos sitios de internet con diferente url pero igual contenido.
+    
+    var proxyForComparison:String{
+        get{
+            return "\(title)";
+        }
+    }
+    
+    
+    
+    
     init(titleBook title:String, coverUrl cover:NSURL, pdfUrl pdf:NSURL, bookTags tags:[String], authorsBook authors:[Author], favorite:Bool){
         
         self.title = title
@@ -87,5 +101,19 @@ class Book{
         return pdf
     }
     
+    
+}
+
+
+//: Mark Equatable
+
+func == (lhs: Book, rhs:Book) -> Bool{
+    
+    // Comparo posiciones de memoria con el triple ===
+    guard (lhs !== rhs) else{
+        return true
+    }
+    
+    return lhs.proxyForComparison == rhs.proxyForComparison
     
 }

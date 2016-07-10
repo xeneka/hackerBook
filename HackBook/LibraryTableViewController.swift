@@ -203,13 +203,11 @@ class LibraryTableViewController: UITableViewController {
         var sectionString = model?.tagDict.keys.sort()
         
         if let order = sectionString?.indexOf("❤ favoritos"){
-            print(order)
             sectionString?.removeAtIndex(order);
             sectionString?.insert("❤ favoritos", atIndex:0)
             
         }
         
-        //return (model?.tagDict.keys.sort()[index])!
         
         return sectionString![index]
     }
@@ -218,7 +216,8 @@ class LibraryTableViewController: UITableViewController {
         
         let info = notificacion.userInfo!
         let book = info[bookKey] as! Book
-        model?.addFavorite(book)
+        model?.marcaDesmarcaFavorie(book)
+        //model?.addFavorite(book)
         tableView.reloadData()
     }
     
