@@ -48,7 +48,7 @@ func getJSONFromUrl(urlToRequest: String) throws -> JSONArray{
         dataArray = try JSONfromNSData(data)
         
         // OJO Esto pasarlo a GCD
-        saveAllObjfromJSON(dataArray)
+        //saveAllObjfromJSON(dataArray) -> Eliminado para que se cargue en función de la demanda de la tabla.
         // FIND
         
         return dataArray
@@ -151,16 +151,26 @@ func saveJSONFromUrlRequest(data:NSData) -> Bool{
 
 func saveObjectJson(url:NSURL){
     let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    
+    print(url)
     
     let writePath = NSURL(fileURLWithPath: "file://"+path[0]).URLByAppendingPathComponent(url.lastPathComponent!)
+    
+    // Verifico que no existe y el recuroso
+    if let contenido = NSData(contentsOfURL: writePath){
+        
+    }else{
+        
+        if let data:NSData = NSData(contentsOfURL: url){
+            data.writeToURL(writePath, atomically: true)
+        }
+        
+        
+    }
     
     // Poner cental dispatch para ejecutarla
     
     
-    if let data:NSData = NSData(contentsOfURL: url){
-        data.writeToURL(writePath, atomically: true)
-    }
+    
     
     
     
@@ -281,7 +291,10 @@ func favoriteRestore()->[String]{
     var array = [String]()
     
     if let arrayFavorite:AnyObject? = defaults.objectForKey(keyFavorite){
+        if (arrayFavorite?.count>0){
             array = arrayFavorite as! [String]
+        }
+        
     }
     
     

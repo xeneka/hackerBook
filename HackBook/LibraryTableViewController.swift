@@ -113,6 +113,8 @@ class LibraryTableViewController: UITableViewController {
         
         cell.bookTitle.text = book?.title
         cell.favorite.hidden = !(book?.favorite)!
+        saveObjectJson((book?.coverUrl)!)
+        saveObjectJson((book?.pdfUrl)!)
       
         
 //        cell.index = indexPath.row
