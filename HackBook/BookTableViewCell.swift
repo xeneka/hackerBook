@@ -16,6 +16,7 @@ class BookTableViewCell: UITableViewCell {
     var index:Int?
     var seccion:String?
     
+    @IBOutlet weak var bookImage: UIImageView!
     //MARK: - xib
     
     @IBOutlet weak var bookTitle: UILabel!
@@ -42,7 +43,9 @@ class BookTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-   
+    func highCell()-> CGFloat{
+        return 99.5
+    }
     
     
    

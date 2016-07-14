@@ -136,10 +136,12 @@ class Library{
         if let tadD = tagDict["❤ favoritos"] {
             
             tagDict["❤ favoritos"]?.append(book)
+            book.favorite=true;
             
         }else{
             tagDict["❤ favoritos"] = BooksArray()
             tagDict["❤ favoritos"]?.append(book)
+            book.favorite=true;
         }
         
         

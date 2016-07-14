@@ -96,37 +96,33 @@ class LibraryTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! BookTableViewCell
         
         
-        
-//        if cell == nil {
-//            // el optionalesta vacila
-//            
-//            //let celda:UINib = UINib(nibName: "BookTableViewCell", bundle: nil)
-//            //tableView.registerNib(celda, forCellReuseIdentifier: cellId)
-//            cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! BookTableViewCell
-//        
-//            //cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellId)
-//            
-//        }
+
         
         let book = model?.bookAtIndex(indexPath.row, tag: getKeyforSection(indexPath.section))
         
         
         cell.bookTitle.text = book?.title
         cell.favorite.hidden = !(book?.favorite)!
+        cell.bookImage.image = book?.showImage()
         saveObjectJson((book?.coverUrl)!)
         saveObjectJson((book?.pdfUrl)!)
-      
-        
-//        cell.index = indexPath.row
-//        cell.seccion = getKeyforSection(indexPath.section)
-        
-        
+        print(book?.favorite)
+   
         
         
         
 
         return cell
     }
+    
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let cell = BookTableViewCell()
+        return cell.highCell()
+    }
+
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
